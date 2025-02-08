@@ -1,0 +1,10 @@
+POST http://localhost:3001/exercises
+Content-Type: application/json
+
+{
+    "name": "Press banca con mancuernas",
+    "repes": 10,
+    "series": 3,
+    "rir": "1-2",
+    "categorie": "67a16bb8cd0a59c582ee2eb3"
+}

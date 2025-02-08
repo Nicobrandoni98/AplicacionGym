@@ -5,7 +5,10 @@ const exerciseSchema = new Schema({
   name: String,
   repes: Number,
   series: Number,
-  categorie: { type: Schema.Types.ObjectId, ref: "Categorie" }, // Referencia al modelo Categorie
+  rir: String,
+  category: { 
+    type: Schema.Types.ObjectId, 
+    ref: "Categorie" }, // Referencia al modelo Categorie
 });
 
 exerciseSchema.set("toJSON", {

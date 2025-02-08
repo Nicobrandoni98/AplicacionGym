@@ -1,0 +1,8 @@
+POST http://localhost:3001/routines
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTQyMTkxOWMyOTU3YWRiNTNlMzJjYSIsInVzZXJuYW1lIjoiSnVhbm1hIiwiaWF0IjoxNzM4ODA5NzU2fQ.ajowt0KPpFCyl73KUXFU4rqK-4m7t1wtKIVS7XG7Yak
+
+{
+    "name": "Rutina de Juan",
+    "exercises": ["67a3bd117f2797ec357dbec4", "67a3bceb7f2797ec357dbeb8", "67a3bd027f2797ec357dbec0"]
+}
