@@ -1,9 +1,14 @@
-import axios from 'axios'
-const baseUrl = 'http://localhost:3001/exercises'
+import axios from "axios";
+const baseUrl = "http://localhost:3001/exercises";
 
-const getExercises = () => {
-    const request = axios.get(baseUrl)
-    return request.then(response => response.data)
-}
+const getExercises = async () => {
+  const response = await axios.get(baseUrl);
+  return response.data;
+};
 
-export default {getExercises}
+const createExercise = async (newExercise) => {
+  const response = await axios.post(baseUrl, newExercise);
+  return response.data;
+};
+
+export default { getExercises, createExercise };

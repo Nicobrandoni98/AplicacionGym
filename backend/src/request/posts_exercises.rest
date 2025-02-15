@@ -2,7 +2,7 @@ POST http://localhost:3001/exercises
 Content-Type: application/json
 
 {
-    "name": "Press banca con mancuernas",
+    "name": "Pecho maquina inclinado",
     "repes": 10,
     "series": 3,
     "rir": "1-2",

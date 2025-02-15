@@ -19,7 +19,7 @@ exercisesRouter.post("/", async (req, res) => {
   try {
     const { name, series, repes, categorie, rir } = req.body;
 
-    if (!name || !series || !repes || !categorie || !rir) {
+    if (!name || !series || !repes /* || !categorie */ || !rir) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
