@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import exerciseService from "../services/exercises";
-import categoryService from "../services/categories";
+import exerciseService from "../services/exercises.ts";
+import categoryService from "../services/categories.ts";
 
-const FormExercises = ({ setExercises }) => {
+const FormExercises = ({ setExercises, handleLogOut }) => {
   const [categories, setCategories] = useState([]);
   const [newExercise, setNewExercise] = useState({
     name: "",
@@ -58,50 +58,55 @@ const FormExercises = ({ setExercises }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Exercise Name"
-        value={newExercise.name}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="number"
-        name="repes"
-        placeholder="Repes"
-        value={newExercise.repes}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="number"
-        name="series"
-        placeholder="Series"
-        value={newExercise.series}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="rir"
-        placeholder="RIR"
-        value={newExercise.rir}
-        onChange={handleChange}
-        required
-      />
+    <>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Exercise Name"
+          value={newExercise.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="number"
+          name="repes"
+          placeholder="Repes"
+          value={newExercise.repes}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="number"
+          name="series"
+          placeholder="Series"
+          value={newExercise.series}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="rir"
+          placeholder="RIR"
+          value={newExercise.rir}
+          onChange={handleChange}
+          required
+        />
 
-      <select onChange={handleCategoryChange} value={newExercise.categorie}>
-        <option value="">Select a category</option>
-        {categories.map((cat) => (
-          <option key={cat.id} value={cat.id}>
-            {cat.name}
-          </option>
-        ))}
-      </select>
-      <button type="submit">Create Exercise</button>
-    </form>
+        <select onChange={handleCategoryChange} value={newExercise.categorie}>
+          <option value="">Select a category</option>
+          {categories.map((cat) => (
+            <option key={cat.id} value={cat.id}>
+              {cat.name}
+            </option>
+          ))}
+        </select>
+        <button type="submit">Create Exercise</button>
+      </form>
+      <div>
+        <button onClick={handleLogOut}>Log Out</button>
+      </div>
+    </>
   );
 };
 

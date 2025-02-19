@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import ExerciseList from "./components/ExerciseList";
 import FormExercises from "./components/FormExercises";
-import exerciseService from "./services/exercises.js";
-import loginService from "./services/login.js";
+import exerciseService from "./services/exercises.ts";
+import loginService from "./services/login.ts";
 
 import "./App.css";
+import LoginForm from "./components/LoginForm.tsx";
 function App() {
   const [exercise, setExercises] = useState([]);
   const [newExercise, setNewExercise] = useState("");
@@ -19,6 +20,21 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem("loggedAppUser");
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON);
+      setUser(user);
+      exerciseService.setToken(user.token);
+    }
+  }, []);
+
+  const handleLogOut = () => {
+    setUser(null);
+    exerciseService.setToken(user.token);
+    window.localStorage.removeItem("loggedAppUser");
+  };
+
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -27,6 +43,9 @@ function App() {
         username,
         password,
       });
+      window.localStorage.setItem("loggedAppUser", JSON.stringify(user));
+      exerciseService.setToken(user.token);
+
       setUser(user);
       setUsername("");
       setPassword("");
@@ -34,30 +53,6 @@ function App() {
       console.log("error: ", error);
     }
   };
-
-  const renderLoginForm = () => (
-    <form onSubmit={handleLogin}>
-      <div>
-        <input
-          type="text"
-          value={username}
-          name="Username"
-          placeholder="Username"
-          onChange={(event) => setUsername(event.target.value)}
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          value={password}
-          name="Password"
-          placeholder="Password"
-          onChange={(event) => setPassword(event.target.value)}
-        />
-      </div>
-      <button>Login</button>
-    </form>
-  );
 
   return (
     <>
@@ -68,11 +63,18 @@ function App() {
             newExercise={newExercise}
             setExercises={setExercises}
             exercise={exercise}
+            handleLogOut={handleLogOut}
           />
           <ExerciseList exercise={exercise} />
         </>
       ) : (
-        renderLoginForm()
+        <LoginForm 
+        handleLogin={handleLogin}
+        username={username}
+        password={password}
+        setUsername={setUsername}
+        setPassword={setPassword}
+        />
       )}
     </>
   );

@@ -10,6 +10,7 @@ const ExerciseList = ({exercise}) => {
     <>
       <h1>Lista de Ejercicios</h1>
       <ul>
+        {console.log(exercise)}
         {exercise.map((e) => (
           <li key={e.id}>
             <strong>{e.name} </strong>

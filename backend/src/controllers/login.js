@@ -23,7 +23,7 @@ loginRouter.post("/", async (req, res) => {
     username: user.username
   }
 
-  const token = jwt.sign(userForToken, '123') // El '123' tengo que ponerlo en una variable de entorno (.env)
+  const token = jwt.sign(userForToken, process.env.JWT_SECRET) // El '123' tengo que ponerlo en una variable de entorno (.env)
 
   res.send({
     name: user.name,

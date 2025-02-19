@@ -2,5 +2,5 @@ POST http://localhost:3001/categories
 Content-Type: application/json
 
 {
-    "name": "Pecho"
+    "name": "Espalda"
 }
