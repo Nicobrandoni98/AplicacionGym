@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import ExerciseList from "./components/ExerciseList";
-import FormExercises from "./components/FormExercises";
+import ExercisesForm from "./components/ExercisesForm.tsx";
 import exerciseService from "./services/exercises.ts";
 import loginService from "./services/login.ts";
-
 import "./App.css";
 import LoginForm from "./components/LoginForm.tsx";
 function App() {
   const [exercise, setExercises] = useState([]);
-  const [newExercise, setNewExercise] = useState("");
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -56,24 +54,22 @@ function App() {
 
   return (
     <>
+      <h1>Gimnasio</h1>
       {user ? (
         <>
-          <FormExercises
-            setNewExercise={setNewExercise}
-            newExercise={newExercise}
+          <ExercisesForm
             setExercises={setExercises}
-            exercise={exercise}
             handleLogOut={handleLogOut}
           />
           <ExerciseList exercise={exercise} />
         </>
       ) : (
-        <LoginForm 
-        handleLogin={handleLogin}
-        username={username}
-        password={password}
-        setUsername={setUsername}
-        setPassword={setPassword}
+        <LoginForm
+          handleLogin={handleLogin}
+          username={username}
+          password={password}
+          setUsername={setUsername}
+          setPassword={setPassword}
         />
       )}
     </>

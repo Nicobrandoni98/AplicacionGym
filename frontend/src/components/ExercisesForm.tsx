@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import exerciseService from "../services/exercises.ts";
 import categoryService from "../services/categories.ts";
 
-const FormExercises = ({ setExercises, handleLogOut }) => {
+const ExercisesForm = ({ setExercises, handleLogOut }) => {
   const [categories, setCategories] = useState([]);
   const [newExercise, setNewExercise] = useState({
     name: "",
@@ -110,4 +110,4 @@ const FormExercises = ({ setExercises, handleLogOut }) => {
   );
 };
 
-export default FormExercises;
+export default ExercisesForm;
