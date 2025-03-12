@@ -9,8 +9,7 @@ const routineSchema = new Schema({
     miercoles: [{ type: Schema.Types.ObjectId, ref: "Exercise" }],
     jueves: [{ type: Schema.Types.ObjectId, ref: "Exercise" }],
     viernes: [{ type: Schema.Types.ObjectId, ref: "Exercise" }],
-    sabado: [{ type: Schema.Types.ObjectId, ref: "Exercise" }],
-    domingo: [{ type: Schema.Types.ObjectId, ref: "Exercise" }]
+    sabado: [{ type: Schema.Types.ObjectId, ref: "Exercise" }]
   },
   createdAt: { type: Date, default: Date.now },
   user: { type: Schema.Types.ObjectId, ref: "User", required: true } // Para saber quién es el dueño

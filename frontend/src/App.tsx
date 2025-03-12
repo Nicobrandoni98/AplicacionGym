@@ -28,10 +28,11 @@ function App() {
   }, []);
 
   const handleLogOut = () => {
-    setUser(null);
-    exerciseService.setToken(user.token);
     window.localStorage.removeItem("loggedAppUser");
+    exerciseService.setToken(null); 
+    setUser(null);
   };
+  
 
   const handleLogin = async (event) => {
     event.preventDefault();

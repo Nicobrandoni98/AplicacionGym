@@ -2,9 +2,9 @@ POST http://localhost:3001/exercises
 Content-Type: application/json
 
 {
-    "name": "Pecho maquina inclinado",
-    "repes": 10,
-    "series": 3,
+    "name": "Gemelos",
+    "repes": 1,
+    "series": 1,
     "rir": "1-2",
-    "categorie": "67a16bb8cd0a59c582ee2eb3"
+    "categorie": "67d1091466e0b7a211e5031f"
 }
