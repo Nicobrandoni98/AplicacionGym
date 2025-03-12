@@ -13,20 +13,19 @@ usersRouter.get("/", async (req, res) => {
   res.json(users);
 });
 usersRouter.post("/", async (req, res) => {
-  const { body } = req;
-  const { username, name, password } = body;
+  try {
+    const { username, name, password } = req.body;
 
-  const saltRounds = 10;
-  const passwordHash = await bcrypt.hash(password, saltRounds);
-  const user = new User({
-    username,
-    name,
-    passwordHash,
-  });
+    const saltRounds = 10;
+    const passwordHash = await bcrypt.hash(password, saltRounds);
 
-  const savedUser = await user.save();
+    const user = new User({ username, name, passwordHash });
+    await user.save();
 
-  res.json(savedUser);
+    res.status(201).json({ message: "Usuario registrado con éxito" });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
 module.exports = usersRouter;
